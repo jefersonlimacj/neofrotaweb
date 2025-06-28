@@ -31,7 +31,7 @@ function BaseTelas({ conteudo }: { conteudo: any }) {
         <nav
           style={{
             backgroundColor: Cor.base2,
-            width: aberto ? "15vw" : "5vw",
+            width: aberto ? 200 : 60,
             height: "100vh",
             flexDirection: "column",
             position: "fixed",
@@ -97,7 +97,7 @@ function BaseTelas({ conteudo }: { conteudo: any }) {
               top: "calc(10vh - 15px)",
               transition: "left 0.4s ease-in-out",
               backdropFilter: "blur(3px)",
-              left: aberto ? "calc(15vw - 15px)" : "calc(5vw - 15px)",
+              left: aberto ? "calc(200px - 15px)" : "calc(60px - 15px)",
             }}
             onClick={() => setAberto(!aberto)}
           >
@@ -120,7 +120,7 @@ function BaseTelas({ conteudo }: { conteudo: any }) {
           className="scrollbox"
           style={{
             backgroundColor: Cor.base,
-            width: aberto ? "85vw" : "95vw",
+            width: aberto ? "calc(100vw - 200px)" : "calc(100vw - 60px)",
             height: "100vh",
             transition: "width 0.3s ease-in-out",
             overflowY: "auto",

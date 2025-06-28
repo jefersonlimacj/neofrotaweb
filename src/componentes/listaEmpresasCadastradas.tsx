@@ -257,11 +257,21 @@ function ListaEmpresasCadastradas() {
                     }}
                   />
                 </td>
-                <td style={{ color: Cor.texto1 }}>{cliente.empresa}</td>
-                <td style={{ color: Cor.texto1 }}>{cliente.contato}</td>
-                <td style={{ color: Cor.texto1 }}>{cliente.email}</td>
-                <td style={{ color: Cor.texto1 }}>{cliente.telefone}</td>
-                <td style={{ color: Cor.texto1 }}>{cliente.cnpj}</td>
+                <td style={{ color: Cor.texto1, }}>
+                  {cliente.empresa}
+                </td>
+                <td style={{ color: Cor.texto1, }}>
+                  {cliente.contato}
+                </td>
+                <td style={{ color: Cor.texto1, }}>
+                  {cliente.email}
+                </td>
+                <td style={{ color: Cor.texto1, }}>
+                  {cliente.telefone}
+                </td>
+                <td style={{ color: Cor.texto1, }}>
+                  {cliente.cnpj}
+                </td>
                 <td>
                   <div
                     style={{
@@ -278,6 +288,7 @@ function ListaEmpresasCadastradas() {
                         fontWeight: "bold",
                         cursor: "pointer",
                         color: Cor.texto1,
+                        fontSize: 20,
                       }}
                       onClick={() => navigate("/verempresa/" + cliente.id)}
                     >
@@ -289,6 +300,7 @@ function ListaEmpresasCadastradas() {
                         fontWeight: "bold",
                         cursor: "pointer",
                         color: Cor.texto1,
+                        fontSize: 20,
                       }}
                     >
                       edit

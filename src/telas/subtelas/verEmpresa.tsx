@@ -2,10 +2,10 @@ import { useState } from "react";
 import BaseTelas from "../../componentes/baseTelas";
 import EditPerfil from "../../componentes/editPerfil";
 import { useTema } from "../../hooks/temaContext";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function VerEmpresa() {
-  const [CxAlertaExcluirCliente, setCxAlertaExcluirCliente] = useState(true);
+  const [CxAlertaExcluirCliente, setCxAlertaExcluirCliente] = useState(false);
   return BaseTelas({
     conteudo: (
       <>
@@ -524,17 +524,21 @@ function ExcluirCliente({
           </p>
         </div>
       </div>
-      <div style={{ display: "flex", flexDirection: "row", gap: 10 }}>
+      <div
+        style={{ display: "flex", flexDirection: "row", gap: 10, width: "30%" }}
+      >
         <button
           style={{
             backgroundColor: Cor.primaria + 30,
             color: Cor.primaria,
+            width: "50%",
             border: "none",
             borderRadius: 14,
-            padding: "10px 50px",
+            padding: "10px 0px",
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
+            justifyContent: "center",
             gap: 10,
             cursor: "pointer",
           }}
@@ -554,13 +558,15 @@ function ExcluirCliente({
         <button
           style={{
             backgroundColor: Cor.atencao + 30,
+            width: "50%",
             color: Cor.atencao,
             border: "none",
             borderRadius: 14,
-            padding: "10px 50px",
+            padding: "10px 0px",
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
+            justifyContent: "center",
             gap: 10,
             cursor: "pointer",
           }}
@@ -593,6 +599,8 @@ function AlertasExcluirCliente({
   cxAlertaExcluirCliente: any;
 }) {
   const Cor = useTema().Cor;
+  const navigate = useNavigate();
+  const [verSenha, setVerSenha] = useState(false);
   return (
     <div>
       <div
@@ -600,15 +608,14 @@ function AlertasExcluirCliente({
           width: "100vw",
           height: "100vh",
           backgroundColor: Cor.base2 + "80", // transparência
-          display: cxAlertaExcluirCliente ? "flex" : "none",
+          display: "flex",
           justifyContent: "center",
           alignItems: "center",
           position: "absolute",
           zIndex: 11,
           top: 0,
           left: 0,
-          backdropFilter: "blur(2px)",
-          transition: "all 0.4s ease-in-out",
+          backdropFilter: "blur(2.5px)",
         }}
         onClick={() => {
           setCxAlertaExcluirCliente(false);
@@ -616,25 +623,176 @@ function AlertasExcluirCliente({
       />
       <div
         style={{
-          width: 300,
-          height: 400,
-          backgroundColor: Cor.texto1,
+          width: 400,
+          backgroundColor: Cor.base,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
           position: "absolute",
           zIndex: 12,
-          left: "calc(50% - 150px)",
+          left: "calc(50% - 200px)",
           top: "calc(50% - 200px)",
           boxShadow: Cor.sombra,
           borderRadius: 22,
-          transform: cxAlertaExcluirCliente ? "scale(1)" : "scale(0.8)",
-          opacity: cxAlertaExcluirCliente ? 1 : 0,
-          transition: "all 0.4s ease-in-out",
-          pointerEvents: cxAlertaExcluirCliente ? "auto" : "none",
+          border: "1px solid" + Cor.texto1 + 30,
         }}
-      ></div>
+      >
+        <div
+          style={{
+            padding: 20,
+            display: "flex",
+            flexDirection: "column",
+            gap: 10,
+            alignItems: "center",
+          }}
+        >
+          <div
+            style={{
+              height: 80,
+              aspectRatio: 1,
+              backgroundColor: Cor.atencao + 50,
+              borderRadius: 16,
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <p
+              style={{
+                fontFamily: "Icone",
+                color: Cor.atencao,
+                fontSize: 40,
+                fontWeight: "bold",
+              }}
+            >
+              warning
+            </p>
+          </div>
+          <p style={{ fontSize: 12, color: Cor.texto1, textAlign: "justify" }}>
+            O cliente será <strong>excluído permanentemente</strong>, incluindo
+            histórico de vouchers, modelos de roteiros fixos, solicitantes,
+            centro de custo e unidades. Esta ação é irreversível e não pode ser
+            desfeita.
+          </p>
+        </div>
+        <div
+          style={{ width: "100%", height: 1, backgroundColor: Cor.texto1 + 30 }}
+        />
+        <div
+          style={{
+            width: "100%",
+            padding: 20,
+            display: "flex",
+            flexDirection: "column",
+            gap: 10,
+          }}
+        >
+          <p style={{ fontSize: 12, color: Cor.texto1, textAlign: "justify" }}>
+            Para confirmar a exclusão, digite sua senha:
+          </p>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              gap: 10,
+              backgroundColor: Cor.texto1 + 10,
+              borderRadius: 22,
+              alignItems: "center",
+              padding: "5px 20px",
+            }}
+          >
+            <input
+              type={verSenha ? "text" : "password"}
+              name=""
+              id=""
+              style={{
+                outline: "none",
+                border: "none",
+                width: "100%",
+                backgroundColor: "transparent",
+                color: Cor.texto1,
+              }}
+              placeholder="Digite sua senha"
+              color="white"
+            />
+            <p
+              style={{
+                fontFamily: "Icone",
+                color: Cor.texto2,
+                fontSize: 24,
+                fontWeight: "bold",
+                cursor: "pointer",
+              }}
+              onClick={() => {
+                setVerSenha(!verSenha);
+              }}
+            >
+              {verSenha ? "visibility_off" : "visibility"}
+            </p>
+          </div>
+        </div>
+        <div
+          style={{ width: "100%", height: 1, backgroundColor: Cor.texto1 + 30 }}
+        />
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            width: "100%",
+            justifyContent: "space-between",
+            alignItems: "flex-end",
+            padding: 20,
+          }}
+        >
+          <button
+            style={{
+              backgroundColor: Cor.texto1 + 10,
+              color: Cor.texto1,
+              border: "1px solid" + Cor.texto2,
+              borderRadius: 14,
+              padding: "5px 20px",
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              gap: 10,
+              cursor: "pointer",
+            }}
+            onClick={() => {
+              setCxAlertaExcluirCliente(false);
+            }}
+          >
+            <p style={{ fontWeight: "bold" }}>Cancelar</p>
+          </button>
+          <button
+            style={{
+              backgroundColor: Cor.atencao + 30,
+              color: Cor.texto1,
+              border: "none",
+              borderRadius: 14,
+              padding: "5px 20px",
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+              gap: 10,
+              cursor: "pointer",
+            }}
+            onClick={() => navigate("/empresas")}
+          >
+            <p
+              style={{
+                fontFamily: "Icone",
+                color: Cor.atencao,
+                fontSize: 24,
+                fontWeight: "bold",
+              }}
+            >
+              delete
+            </p>
+            <p style={{ fontWeight: "bold" }}>Excluir</p>
+          </button>
+        </div>
+      </div>
     </div>
   );
 }

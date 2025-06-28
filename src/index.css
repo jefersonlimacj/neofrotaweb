@@ -1,5 +1,5 @@
 * {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Open Sans", sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -12,15 +12,24 @@ body {
 }
 
 @font-face {
-  font-family: 'Icone';
-  src: url('/src/assets/fonts/MaterialSymbolsRounded-Light.ttf') format('truetype');
+  font-family: "Open Sans";
+  src: url("/src/assets/fonts/OpenSans-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
+
 @font-face {
-  font-family: 'Icone';
-  src: url('/src/assets/fonts/MaterialSymbolsRounded-Fill.ttf') format('truetype');
-  font-weight: bold;
+  font-family: "Icone";
+  src: url("/src/assets/fonts/MaterialSymbolsRounded-Light.ttf")
+    format("truetype");
+  font-weight: normal;
   font-style: normal;
 }
 
+@font-face {
+  font-family: "Icone";
+  src: url("/src/assets/fonts/MaterialSymbolsRounded-Fill.ttf")
+    format("truetype");
+  font-weight: bold;
+  font-style: normal;
+}

@@ -3,6 +3,7 @@ import EditPerfil from "../componentes/editPerfil";
 import { useTema } from "../hooks/temaContext";
 import ListaEmpresasCadastradas from "../componentes/listaEmpresasCadastradas";
 import CardInfosMenor from "../componentes/cardInfosMenor";
+import { useNavigate } from "react-router-dom";
 
 function Empresas() {
   return BaseTelas({
@@ -84,42 +85,52 @@ function EmpresasConteudo() {
           valorAnterior={-1.25}
         />
       </div>
+      <CadastrarNovoCliente />
+      <ListaEmpresasCadastradas />
+    </div>
+  );
+}
+
+function CadastrarNovoCliente() {
+  const navigate = useNavigate();
+  const Cor = useTema().Cor;
+  return (
+    <div
+      style={{
+        backgroundColor: Cor.base2,
+        width: "100%",
+        borderRadius: 22,
+        padding: 15,
+        display: "flex",
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: "center",
+        boxShadow: Cor.sombra,
+      }}
+    >
+      <p style={{ color: Cor.secundaria, fontSize: "20px" }}>
+        Cadastrar Novo Cliente
+      </p>
       <div
         style={{
-          backgroundColor: Cor.base2,
-          width: "100%",
-          borderRadius: 22,
-          padding: 15,
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignItems: "center",boxShadow: Cor.sombra,
+          width: "60%",
+          height: 1,
+          backgroundColor: Cor.primaria,
         }}
+      />
+      <button
+        style={{
+          color: Cor.base,
+          backgroundColor: Cor.primaria,
+          padding: "10px 35px",
+          borderRadius: 22,
+          border: "none",
+          cursor: "pointer",
+        }}
+        onClick={() => navigate("/criarEmpresa")}
       >
-        <p style={{ color: Cor.secundaria, fontSize: "20px" }}>
-          Cadastrar Novo Cliente
-        </p>
-        <div
-          style={{
-            width: "70%",
-            height: 1,
-            backgroundColor: Cor.primaria,
-          }}
-        />
-        <button
-          style={{
-            color: Cor.base,
-            backgroundColor: Cor.primaria,
-            padding: "10px 35px",
-            borderRadius: 22,
-            border: "none",
-            cursor: "pointer",
-          }}
-        >
-          Cadastrar
-        </button>
-      </div>
-      <ListaEmpresasCadastradas />
+        Cadastrar
+      </button>
     </div>
   );
 }

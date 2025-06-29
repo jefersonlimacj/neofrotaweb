@@ -10,6 +10,7 @@ const clientes = [
     telefone: "Telefone 1",
     email: "email1@mail.com",
     cnpj: "000.000.001/0000-01",
+    statusCliente: "Ativo",
   },
   {
     id: 2,
@@ -19,6 +20,7 @@ const clientes = [
     telefone: "Telefone 2",
     email: "email2@mail.com",
     cnpj: "000.000.002/0000-02",
+    statusCliente: "Inativo",
   },
   {
     id: 3,
@@ -28,6 +30,7 @@ const clientes = [
     telefone: "Telefone 3",
     email: "email3@mail.com",
     cnpj: "000.000.003/0000-03",
+    statusCliente: "Ativo",
   },
   {
     id: 4,
@@ -37,6 +40,7 @@ const clientes = [
     telefone: "Telefone 4",
     email: "email4@mail.com",
     cnpj: "000.000.004/0000-04",
+    statusCliente: "Inativo",
   },
   {
     id: 5,
@@ -46,6 +50,7 @@ const clientes = [
     telefone: "Telefone 5",
     email: "email5@mail.com",
     cnpj: "000.000.005/0000-05",
+    statusCliente: "Ativo",
   },
   {
     id: 6,
@@ -55,6 +60,7 @@ const clientes = [
     telefone: "Telefone 6",
     email: "email6@mail.com",
     cnpj: "000.000.006/0000-06",
+    statusCliente: "Ativo",
   },
   {
     id: 7,
@@ -64,6 +70,7 @@ const clientes = [
     telefone: "Telefone 7",
     email: "email7@mail.com",
     cnpj: "000.000.007/0000-07",
+    statusCliente: "Ativo",
   },
   {
     id: 8,
@@ -73,6 +80,7 @@ const clientes = [
     telefone: "Telefone 8",
     email: "email8@mail.com",
     cnpj: "000.000.008/0000-08",
+    statusCliente: "Ativo",
   },
   {
     id: 9,
@@ -82,6 +90,7 @@ const clientes = [
     telefone: "Telefone 9",
     email: "email9@mail.com",
     cnpj: "000.000.009/0000-09",
+    statusCliente: "Ativo",
   },
   {
     id: 10,
@@ -91,6 +100,7 @@ const clientes = [
     telefone: "Telefone 10",
     email: "email10@mail.com",
     cnpj: "000.000.010/0000-10",
+    statusCliente: "Ativo",
   },
 ];
 
@@ -189,8 +199,9 @@ function ListaEmpresasCadastradas() {
         </div>
       </div>
       <div style={{ width: "100%" }}>
-        <style>
-          {`table {
+        <table>
+          <style>
+            {`table {
               border-collapse: collapse;
               width: 100%;
                }
@@ -203,14 +214,13 @@ function ListaEmpresasCadastradas() {
               }
 
             tr:nth-child(even) {
-              background-color: ${Cor.texto1 + 10};
+              background-color: ${Cor.base};
               }
 
             tr:hover {
-              background-color: ${Cor.texto1 + 20};
+              background-color: ${Cor.texto1 + "05"};
               }`}
-        </style>
-        <table>
+          </style>
           <thead
             style={{
               backgroundColor: Cor.texto2 + 50,
@@ -227,10 +237,11 @@ function ListaEmpresasCadastradas() {
             >
               <th style={{ width: "5%", textAlign: "center" }}>Logo</th>
               <th style={{ width: "20%" }}>Nome</th>
-              <th style={{ width: "15%" }}>Contato</th>
+              <th style={{ width: "10%" }}>Contato</th>
               <th style={{ width: "20%" }}>E-mail</th>
-              <th style={{ width: "15%" }}>Telefone</th>
+              <th style={{ width: "10%" }}>Telefone</th>
               <th style={{ width: "15%" }}>CNPJ</th>
+              <th style={{ width: "10%", textAlign: "center" }}>Status</th>
               <th style={{ width: "10%", textAlign: "center" }}>Ações</th>
             </tr>
           </thead>
@@ -257,20 +268,35 @@ function ListaEmpresasCadastradas() {
                     }}
                   />
                 </td>
-                <td style={{ color: Cor.texto1, }}>
-                  {cliente.empresa}
-                </td>
-                <td style={{ color: Cor.texto1, }}>
-                  {cliente.contato}
-                </td>
-                <td style={{ color: Cor.texto1, }}>
-                  {cliente.email}
-                </td>
-                <td style={{ color: Cor.texto1, }}>
-                  {cliente.telefone}
-                </td>
-                <td style={{ color: Cor.texto1, }}>
-                  {cliente.cnpj}
+                <td style={{ color: Cor.texto1 }}>{cliente.empresa}</td>
+                <td style={{ color: Cor.texto1 }}>{cliente.contato}</td>
+                <td style={{ color: Cor.texto1 }}>{cliente.email}</td>
+                <td style={{ color: Cor.texto1 }}>{cliente.telefone}</td>
+                <td style={{ color: Cor.texto1 }}>{cliente.cnpj}</td>
+                <td>
+                  <p
+                    style={{
+                      color:
+                        cliente.statusCliente === "Ativo"
+                          ? Cor.ativo
+                          : Cor.inativo,
+                      textAlign: "center",
+                      fontSize: 12,
+                      fontWeight: "bold",
+                      backgroundColor:
+                        cliente.statusCliente === "Ativo"
+                          ? Cor.ativo + 30
+                          : Cor.inativo + 30,
+                      width: 80,
+                      height: 25,
+                      borderRadius: 22,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
+                  >
+                    {cliente.statusCliente}
+                  </p>
                 </td>
                 <td>
                   <div
@@ -321,7 +347,7 @@ function ListaEmpresasCadastradas() {
             alignItems: "center",
             justifyContent: "flex-end",
             backgroundColor: Cor.texto1 + 50,
-            borderRadius: "0 0 16px 16px",
+            borderRadius: "0 0 10px 10px",
           }}
         >
           <div style={{ display: "flex", flexDirection: "row" }}>

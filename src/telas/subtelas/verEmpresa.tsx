@@ -623,7 +623,7 @@ function AlertasExcluirCliente({
       />
       <div
         style={{
-          width: 400,
+          width: 300,
           backgroundColor: Cor.base,
           display: "flex",
           flexDirection: "column",
@@ -631,7 +631,7 @@ function AlertasExcluirCliente({
           justifyContent: "center",
           position: "absolute",
           zIndex: 12,
-          left: "calc(50% - 200px)",
+          left: "calc(50% - 150px)",
           top: "calc(50% - 200px)",
           boxShadow: Cor.sombra,
           borderRadius: 22,
@@ -688,7 +688,7 @@ function AlertasExcluirCliente({
             gap: 10,
           }}
         >
-          <p style={{ fontSize: 12, color: Cor.texto1, textAlign: "justify" }}>
+          <p style={{ fontSize: 12, color: Cor.texto1, textAlign: "center" }}>
             Para confirmar a exclusão, digite sua senha:
           </p>
           <div

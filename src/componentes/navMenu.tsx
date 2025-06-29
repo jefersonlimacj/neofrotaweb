@@ -75,7 +75,7 @@ function BtnMenu({
         style={{
           display: "flex",
           flexDirection: "row",
-          gap: 10,
+          gap: sidebar ? 15 : 5,
           alignItems: "center",
           cursor: "pointer",
           paddingRight: 10,
@@ -85,7 +85,7 @@ function BtnMenu({
         {ativo ? (
           <div
             style={{
-              width: sidebar ? "5%" : "10%",
+              width: sidebar ? 10 : 15,
               height: 45,
               borderRadius: "0 10px 10px 0",
               backgroundColor: Cor.primaria,
@@ -107,11 +107,11 @@ function BtnMenu({
             flexDirection: "row",
             gap: 10,
             alignItems: "center",
-            justifyContent: "flex-start",
-            width: "100%",
-            paddingRight: 10,
-            paddingLeft: 10,
+            justifyContent: sidebar ? "flex-start" : "center",
+            paddingLeft: sidebar ? 10 : 0,
             height: 40,
+            width: "100%",
+            aspectRatio: 1,
             borderRadius: 14,
             backgroundColor: ativo ? Cor.primaria + 15 : "transparent",
           }}
@@ -120,7 +120,7 @@ function BtnMenu({
             style={{
               fontFamily: "Icone",
               fontWeight: "bold",
-              fontSize: "24px",
+              fontSize: 20,
               color: ativo ? Cor.primaria : Cor.texto2,
             }}
           >
